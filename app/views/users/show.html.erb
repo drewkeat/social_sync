@@ -1,5 +1,4 @@
-<h1>Welcome <%=@user.name%></h1>
+<h1><%=@user.name%></h1>
+<p>viewed by <%=Helpers.current_user(session).name%></p>
 
-<form action="">
-    <button type="submit" formaction='/logout' formmethod="get">Logout</button>
-</form>
+<a href="/users">Users List</a>

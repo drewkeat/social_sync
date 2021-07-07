@@ -1,4 +1,5 @@
 require './config/environment'
+require 'rack-flash'
 
 class ApplicationController < Sinatra::Base
 
@@ -7,6 +8,7 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     set :session_secret, "secret" #?? Fix This
+    use Rack::Flash
   end
 
   get "/" do
@@ -19,12 +21,15 @@ class ApplicationController < Sinatra::Base
     if @user && @user.authenticate(params[:user][:password])
       session[:user_id]= @user.id
       redirect "/users/#{@user.id}"
+    else
+      flash[:message]= "User account not found"
+      redirect '/users/new'
     end
-    redirect '/users/new'
   end
 
   get "/logout" do
     session.clear
     redirect '/'
   end
+
 end

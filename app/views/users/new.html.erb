@@ -1,3 +1,6 @@
+<% if flash.has?(:message)%>
+    <h1 style="color:red"><%= flash[:message] %></h1>
+<%end%>
 <h1>Complete this form to create an account</h1>
 <form action="/users" method="post">
 Enter Your Name: <input type="text" name="user[name]" id="name_field"><br>

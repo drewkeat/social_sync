@@ -11,7 +11,7 @@ gem 'shotgun'
 gem 'pry'
 gem 'bcrypt'
 gem 'tux'
-gem 'faker'
+gem 'rack-flash3'
 gem 'dotenv'
 
 group :test do

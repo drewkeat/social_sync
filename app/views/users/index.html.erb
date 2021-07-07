@@ -2,6 +2,6 @@
 
 <ul>
     <%@users.each do |user|%>
-    <li><%=user.name%> &nbsp;&nbsp;-&nbsp;&nbsp;<a href="#">Add Friend</a></li>
+    <li><a href="/users/<%=user.id%>"><%=user.name%></a> &nbsp;&nbsp;-&nbsp;&nbsp;<a href="#">Add Friend</a></li>
     <%end%>
 </ul>
