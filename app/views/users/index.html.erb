@@ -1,1 +1,7 @@
-<h1>This is the Model's index page.</h1>
+<h1>Here are all of the Social Sync users</h1>
+
+<ul>
+    <%@users.each do |user|%>
+    <li><%=user.name%> &nbsp;&nbsp;-&nbsp;&nbsp;<a href="#">Add Friend</a></li>
+    <%end%>
+</ul>

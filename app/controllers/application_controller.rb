@@ -13,4 +13,18 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
+  post "/login" do
+    @user = User.find_by(email: params[:user][:email])
+    
+    if @user && @user.authenticate(params[:user][:password])
+      session[:user_id]= @user.id
+      redirect "/users/#{@user.id}"
+    end
+    redirect '/users/new'
+  end
+
+  get "/logout" do
+    session.clear
+    redirect '/'
+  end
 end
