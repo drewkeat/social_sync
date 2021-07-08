@@ -13,8 +13,7 @@ class FreetimesController < ApplicationController
   # POST: /freetimes
   post "/freetimes" do
     @user = Helpers.current_user(session)
-    time = @user.freetimes.build(params[:freetime])
-    time.save
+    @user.freetimes.build(params[:freetime]).save
     redirect "/users/account"
   end
 
