@@ -1,1 +1,10 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<h1>Edit this availability</h1>
+<form action="/freetimes" method="post">
+    <input type="hidden" name="_method" value="patch" id="hidden">
+    Enter the beginning of your availability: <input type="datetime-local" name="freetime[start]" id="start_time" value="<%=@freetime.start.to_s.gsub(" ","T").gsub("TUTC","")%>"> <br>
+    Enter the end of your availability: <input type="datetime-local" name="freetime[end]" id="end_time" value="<%=@freetime.end.to_s.gsub(" ","T").gsub("TUTC","")%>"> <br>
+    <br><br>
+    <input type="submit" value="Update Free Time">
+</form>
+
+<a href="/users/account">Cancel</a>

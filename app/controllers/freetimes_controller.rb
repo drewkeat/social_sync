@@ -24,6 +24,7 @@ class FreetimesController < ApplicationController
 
   # GET: /freetimes/5/edit
   get "/freetimes/:id/edit" do
+    @freetime = Freetime.find(params[:id])
     erb :"/freetimes/edit.html"
   end
 
