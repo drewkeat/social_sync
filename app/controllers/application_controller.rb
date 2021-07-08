@@ -12,10 +12,10 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :welcome
+    erb :index.erb
   end
 
-  post "/login" do
+  get "/login" do
     @user = User.find_by(email: params[:user][:email])
     
     if @user && @user.authenticate(params[:user][:password])
