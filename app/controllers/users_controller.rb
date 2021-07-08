@@ -40,16 +40,20 @@ class UsersController < ApplicationController
 
   # GET: /users/5/edit
   get "/users/:id/edit" do
+    @user = Helpers.current_user(session)
     erb :"/users/edit.html"
   end
 
   # PATCH: /users/5
   patch "/users/:id" do
-    redirect "/users/:id"
+    @user = User.find(params[:id])
+    @user.update(params[:user])
+    redirect "/users/#{session[:user_id]}"
   end
 
   # DELETE: /users/5/delete
   delete "/users/:id/delete" do
-    redirect "/users"
+    @user = Helpers.current_user(session).destroy
+    redirect "/logout"
   end
 end
