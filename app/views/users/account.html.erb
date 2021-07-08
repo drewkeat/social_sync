@@ -8,9 +8,10 @@
 
 <hr>
 <h2>My Availability:</h2>
-<%@user.freetimes.each do |ft|%>
-Start: <%=ft.start.strftime("%B, %d %I:%M %p")%> <br>
-End: <%=ft.end.strftime("%B, %d %I:%M %p")%> <br>
+<%@user.freetimes.where("start > ?", DateTime.now).each do |ft|%>
+<div>
+    <%=ft.start.strftime("%B %d, %I:%M %p")%> - <%=ft.end.strftime("%I:%M %p")%> <br> <a href="/freetimes/<%=ft.id%>/edit">Edit Time</a>
+</div>
 <%end%>
 <hr>
 <a href="/users">Users List</a>
