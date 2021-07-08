@@ -12,7 +12,10 @@ class FreetimesController < ApplicationController
 
   # POST: /freetimes
   post "/freetimes" do
-    redirect "/freetimes"
+    @user = Helpers.current_user(session)
+    time = @user.freetimes.build(params[:freetime])
+    time.save
+    redirect "/users/account"
   end
 
   # GET: /freetimes/5

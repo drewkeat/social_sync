@@ -6,6 +6,11 @@
 </form>
 <br><br>
 
-
-
+<hr>
+<h2>My Availability:</h2>
+<%@user.freetimes.each do |ft|%>
+Start: <%=ft.start.strftime("%B, %d %I:%M %p")%> <br>
+End: <%=ft.end.strftime("%B, %d %I:%M %p")%> <br>
+<%end%>
+<hr>
 <a href="/users">Users List</a>
