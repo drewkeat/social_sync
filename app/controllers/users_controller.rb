@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   # GET: /users
   get "/users" do
     if !Helpers.logged_in?(session)
-      flash[:message] = "You must be logged in to view users."
+      flash[:message] = "You must be logged in to view this page."
       redirect "/"
     end
     @users = User.all
@@ -24,6 +24,7 @@ class UsersController < ApplicationController
 
   get "/users/account" do
     if !Helpers.logged_in?(session)
+      flash[:message] = "You must be logged in to view this page."
       redirect "/"
     end
     @user = Helpers.current_user(session)
@@ -34,7 +35,8 @@ class UsersController < ApplicationController
   get "/users/:id" do
     user_page = params[:id].to_i
     if !Helpers.logged_in?(session)
-      redirect '/'
+      flash[:message] = "You must be logged in to view this page."
+      redirect "/"
     elsif user_page == Helpers.current_user(session).id
       redirect '/users/account'
     else
@@ -47,6 +49,7 @@ class UsersController < ApplicationController
   # GET: /users/5/edit
   get "/users/:id/edit" do
     if !Helpers.logged_in?(session)
+      flash[:message] = "You must be logged in to view this page."
       redirect "/"
     end
     @user = Helpers.current_user(session)
@@ -63,6 +66,7 @@ class UsersController < ApplicationController
   # DELETE: /users/5/delete
   delete "/users/:id/delete" do
     @user = Helpers.current_user(session).destroy
+    flash[:message] = "Your account has been deleted"
     redirect "/logout"
   end
 end
