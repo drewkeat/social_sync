@@ -8,7 +8,7 @@
 
 <hr>
 <h2>My Availability:</h2>
-<%@user.freetimes.where("start > ?", DateTime.now).each do |ft|%>
+<%@user.freetimes.where("start > ?", DateTime.now).sort_by {|ft| ft.start}.each do |ft|%>
     <div>
     <p><b><%=ft.label%></b> <br> Duration: <%=ft.duration%> hours   -   <a href="/freetimes/<%=ft.id%>/edit">Edit Time</a></p>
     </div>

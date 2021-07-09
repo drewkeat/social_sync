@@ -60,13 +60,14 @@ class UsersController < ApplicationController
   patch "/users/:id" do
     @user = User.find(params[:id])
     @user.update(params[:user])
+    flash[:message] = "Your profile has been updated."
     redirect "/users/#{session[:user_id]}"
   end
 
   # DELETE: /users/5/delete
   delete "/users/:id/delete" do
     @user = Helpers.current_user(session).destroy
-    flash[:message] = "Your account has been deleted"
+    flash[:message] = "Your account has been deleted."
     redirect "/logout"
   end
 end
