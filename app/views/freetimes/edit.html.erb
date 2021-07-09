@@ -1,4 +1,5 @@
 <h1>Edit this availability</h1>
+
 <form action="/freetimes/<%=@freetime.id%>" method="post">
     <input type="hidden" name="_method" value="patch" id="hidden">
     Enter the beginning of your availability: <input type="datetime-local" name="freetime[start]" id="start_time" value="<%=@freetime.start.to_s.gsub(" ","T").gsub("TUTC","")%>"> <br>
@@ -7,9 +8,10 @@
     <input type="submit" value="Update Free Time">
 </form>
 
+
 <form action="/freetimes/<%=@freetime.id%>/delete" method="post">
-<input type="hidden" name="_method" id="hidden" value="delete">
-<input type="submit" value="Delete Availability">
+    <input type="hidden" name="_method" id="hidden" value="delete">
+    <input type="submit" value="Delete Availability">
 </form>
 
 <a href="/users/account">Cancel</a>

@@ -1,29 +1,5 @@
 
-h1 {
-    text-align: center;
-    color: blue;
-}
-
-div.welcome_text {
-    text-align: center;
-}
-
-.welcome_form {
-    display: flex;
-    justify-content: center
-}
-
-.form_buttons {
-    display: flex;
-    flex-flow:column;
-    justify-content: space-between;
-}
-
-input {
-    margin: 5px;
-}
-
 footer {
     bottom: 0px;
-    position: static;
+    position: fixed;
 }
