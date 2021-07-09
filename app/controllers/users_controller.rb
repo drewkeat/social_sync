@@ -2,13 +2,15 @@ class UsersController < ApplicationController
 
   # GET: /users
   get "/users" do
+    if !Helpers.logged_in?(session)
+      redirect "/"
+    end
     @users = User.all
     erb :"/users/index.html"
   end
 
   # GET: /users/new
   get "/users/new" do
-    flash[:message] = "User account not found"
     erb :"/users/new.html"
   end
 
@@ -20,6 +22,9 @@ class UsersController < ApplicationController
   end
 
   get "/users/account" do
+    if !Helpers.logged_in?(session)
+      redirect "/"
+    end
     @user = Helpers.current_user(session)
     erb :"/users/account.html"
   end
@@ -40,6 +45,9 @@ class UsersController < ApplicationController
 
   # GET: /users/5/edit
   get "/users/:id/edit" do
+    if !Helpers.logged_in?(session)
+      redirect "/"
+    end
     @user = Helpers.current_user(session)
     erb :"/users/edit.html"
   end

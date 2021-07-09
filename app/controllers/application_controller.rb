@@ -12,10 +12,16 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
+    if Helpers.logged_in?(session)
+      redirect "/users/account"
+    end
     erb :index
   end
 
   get "/login" do
+    if Helpers.logged_in?(session)
+      redirect '/users/account'
+    end
     @user = User.find_by(email: params[:user][:email])
     
     if @user && @user.authenticate(params[:user][:password])
