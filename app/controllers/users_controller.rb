@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   # GET: /users
   get "/users" do
     if !Helpers.logged_in?(session)
+      flash[:message] = "You must be logged in to view users."
       redirect "/"
     end
     @users = User.all
