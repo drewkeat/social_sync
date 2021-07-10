@@ -2,11 +2,15 @@
     <h1>New Freetime</h1>
 </header>
 
-<form action="/freetimes" method="post">
-    Enter the beginning of your availability: <input type="datetime-local" name="freetime[start]" id="start_time"> <br>
-    Enter the end of your availability: <input type="datetime-local" name="freetime[end]" id="end_time"> <br>
-    <br><br>
-    <input type="submit" value="Create Free Time">
-</form>
+<div class="form_wrapper">
+    <div class="form_fields">
+        <form action="/freetimes" method="post">
+            Enter the beginning of your availability: <input type="datetime-local" name="freetime[start]" id="start_time"> <br>
+            Enter the end of your availability: <input type="datetime-local" name="freetime[end]" id="end_time"> <br>
+            <br><br>
+            <input type="submit" value="Create Free Time">
+        </form>
+    </div>
+</div>
 
 <a href="/users/account">Cancel</a>

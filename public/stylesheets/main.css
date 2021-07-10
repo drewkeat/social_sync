@@ -27,6 +27,7 @@ body {
     background: blanchedalmond;
     border-bottom: #61748c solid;
     box-shadow: #20818c55 0px 10px 5px;
+    margin-bottom: 25px;
 }
 
 h1 {
@@ -42,14 +43,25 @@ h1 {
      margin: 100px;
  }
  
- div.form_wrapper {
+ div.main div.form_wrapper {
      display: inline-flex;
-     flex-flow: row, wrap;
+     flex-flow: row wrap;
      background:aliceblue;
      border: #20818c solid 3px;
      box-shadow: black -5px 4px 10px;
      position: sticky;
      right: 100px;  
+ }
+
+  div.form_wrapper {
+     display: inline-flex;
+     flex-flow: row wrap;
+     background:aliceblue;
+     border: #20818c solid 3px;
+     box-shadow: black -5px 4px 10px;
+     position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
  }
  
  div.form_fields {
