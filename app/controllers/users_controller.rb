@@ -17,9 +17,18 @@ class UsersController < ApplicationController
 
   # POST: /users
   post "/users" do
-    @user = User.create(params[:user])
-    session[:user_id] = @user.id
-    redirect "/users/#{@user.id}"
+    binding.pry
+    if params[:user][:name].empty? || params[:user][:email].empty? || params[:user][:password].empty?
+      flash[:message] = "Please complete all fields."
+      redirect '/'
+    elsif !User.find_by(email: params[:user][:email])
+      @user = User.create(params[:user])
+      session[:user_id] = @user.id
+      redirect "/users/#{@user.id}"
+    else
+      flash[:message] = "Account already exists."
+      redirect "/"
+    end
   end
 
   get "/users/account" do
