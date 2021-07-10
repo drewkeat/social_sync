@@ -1,4 +1,6 @@
-<h1><%=@user.name%></h1>
+<header>
+    <h1><%=@user.name%></h1>
+</header>
 <p>viewed by <%=Helpers.current_user(session).name%></p>
 
 <a href="/users">Users List</a>
