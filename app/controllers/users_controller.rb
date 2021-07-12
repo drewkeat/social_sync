@@ -17,7 +17,6 @@ class UsersController < ApplicationController
 
   # POST: /users
   post "/users" do
-    binding.pry
     if params[:user][:name].empty? || params[:user][:email].empty? || params[:user][:password].empty?
       flash[:message] = "Please complete all fields."
       redirect '/'
