@@ -1,6 +1,17 @@
 <header>
     <h1><%=@user.name%></h1>
 </header>
-<p>viewed by <%=Helpers.current_user(session).name%></p>
+
+<%if !@user.friends.include?(Helpers.current_user(session))%>
+    <h2>You must be friends with this user to view their availability</h2>
+<%else%>
+    <h2>My Availability:</h2>
+    <%@user.freetimes.where("start > ?", DateTime.now).sort_by {|ft| ft.start}.each do |ft|%>
+        <div>
+        <p><b><%=ft.label%></b> <br> Duration: <%=ft.duration%> hours
+        </div>
+    <%end%>
+<hr>
+<%end%>
 
 <a href="/users">Users List</a>
