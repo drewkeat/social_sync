@@ -6,5 +6,6 @@ end
 
 use Rack::MethodOverride 
 run ApplicationController
+use FriendshipsController
 use FreetimesController
 use UsersController

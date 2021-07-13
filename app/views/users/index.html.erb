@@ -4,6 +4,6 @@
 
 <ul>
     <%@users.each do |user|%>
-    <li><a href="/users/<%=user.id%>"><%=user.name%></a> &nbsp;&nbsp;-&nbsp;&nbsp;<a href="#">Add Friend</a></li>
+    <li><a href="/users/<%=user.id%>"><%=user.name%></a> &nbsp;&nbsp;-&nbsp;&nbsp;<a href="/friendships/new/<%=user.id%>">Add Friend</a></li>
     <%end%>
 </ul>
