@@ -5,8 +5,8 @@
 <div class="form_wrapper">
     <div class="form_fields">
         <form action="/freetimes" method="post">
-            Enter the beginning of your availability: <input type="datetime-local" name="freetime[start]" id="start_time"> <br>
-            Enter the end of your availability: <input type="datetime-local" name="freetime[end]" id="end_time"> <br>
+            Enter the beginning of your availability: <input type="datetime-local" name="freetime[start]" id="start_time" value="<%=DateTime.now.strftime("%Y-%m-%dT%H:%M")%>"> <br>
+            Enter the end of your availability: <input type="datetime-local" name="freetime[end]" id="end_time" value="<%=DateTime.now.strftime("%Y-%m-%dT%H:%M")%>"> <br>
             <br><br>
             <input type="submit" value="Create Free Time">
         </form>

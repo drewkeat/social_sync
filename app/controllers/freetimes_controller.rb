@@ -12,6 +12,10 @@ class FreetimesController < ApplicationController
   # POST: /freetimes
   post "/freetimes" do
     @user = Helpers.current_user(session)
+    if (params[:freetime][:start].to_date != params[:freetime][:end].to_date) || params[:freetime][:start] >= params[:freetime][:end]
+      flash[:message]="Free Time must occur on the same day and end after start time."
+      redirect '/freetimes/new'
+    end
     @user.freetimes.build(params[:freetime]).save
     flash[:message] = "Yay! More Free Time!"
     redirect "/users/account"
