@@ -6,8 +6,8 @@
     <div class="form_fields">
         <form action="/freetimes/<%=@freetime.id%>" method="post">
             <input type="hidden" name="_method" value="patch" id="hidden">
-            Enter the beginning of your availability: <input type="datetime-local" name="freetime[start]" id="start_time" value="<%=@freetime.start.to_s.gsub(" ","T").gsub("TUTC","")%>"> <br>
-            Enter the end of your availability: <input type="datetime-local" name="freetime[end]" id="end_time" value="<%=@freetime.end.to_s.gsub(" ","T").gsub("TUTC","")%>"> <br>
+            Enter the beginning of your availability: <input type="datetime-local" name="freetime[start]" id="start_time" value="<%=@freetime.start.localtime.to_s.gsub(" ","T").gsub(/T-.*/,"")%>"> <br>
+            Enter the end of your availability: <input type="datetime-local" name="freetime[end]" id="end_time" value="<%=@freetime.end.localtime.to_s.gsub(" ","T").gsub(/T-.*/,"")%>"> <br>
             <br><br>
             <input type="submit" value="Update Free Time">
         </form>

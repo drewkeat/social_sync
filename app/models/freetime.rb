@@ -6,7 +6,7 @@ class Freetime < ActiveRecord::Base
     end
 
     def label
-        return "#{self.start.strftime("%B %d, %I:%M %p")} - #{self.end.strftime("%I:%M %p")}"
+        return "#{self.start.localtime.strftime("%B %d, %I:%M %p")} - #{self.end.localtime.strftime("%I:%M %p")}"
     end
 
     # Determines whether freetime can be aligned with self

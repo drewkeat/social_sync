@@ -16,7 +16,7 @@ class FreetimesController < ApplicationController
       flash[:message]="Free Time must occur on the same day and end after start time."
       redirect '/freetimes/new'
     end
-    @user.freetimes.build(params[:freetime]).save
+    @user.freetimes.build(start: Helpers.time_localize(params[:freetime][:start]), end: Helpers.time_localize(params[:freetime][:end])).save
     flash[:message] = "Yay! More Free Time!"
     redirect "/users/account"
   end
@@ -35,7 +35,7 @@ class FreetimesController < ApplicationController
   # PATCH: /freetimes/5
   patch "/freetimes/:id" do
     @freetime = Freetime.find(params[:id])
-    @freetime.update(params[:freetime])
+    @freetime.update(start: Helpers.time_localize(params[:freetime][:start]), end: Helpers.time_localize(params[:freetime][:end]))
     flash[:message] = "Availability updated"
     redirect "/users/account"
   end
