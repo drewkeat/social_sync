@@ -13,6 +13,13 @@
 
 <br><br>
 
+<h2>Friends</h2>
+<%@user.friends.each do |friend|%>
+    <div>
+    <span><b><%=friend.name%></b>   -   <a href="#">Find Freetime</a></span>
+    </div>
+<%end%>
+<br>
 <hr>
 <h2>My Availability:</h2>
 <%@user.freetimes.where("start > ?", DateTime.now).sort_by {|ft| ft.start}.each do |ft|%>
@@ -21,4 +28,5 @@
     </div>
 <%end%>
 <hr>
+
 <a href="/users">Users List</a>
