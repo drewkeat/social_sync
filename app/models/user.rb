@@ -12,4 +12,13 @@ class User < ActiveRecord::Base
         self.save
         user.save
     end
+
+    def find_common_times(friend)
+    freetimes = []
+        self.freetimes.each do |my_ft|
+            friend.freetimes.each do |friend_ft|
+                freetimes << my_ft.match_time(friend_ft)
+            end
+        end
+    end
 end

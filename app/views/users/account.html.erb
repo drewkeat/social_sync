@@ -16,7 +16,7 @@
 <h2>Friends</h2>
 <%@user.friends.each do |friend|%>
     <div>
-    <span><b><%=friend.name%></b>   -   <a href="#">Find Freetime</a></span>
+    <span><a href="/users/<%=friend.id%>"><b><%=friend.name%></b></a>   -   <a href="#">Find Freetime</a></span>
     </div>
 <%end%>
 <br>

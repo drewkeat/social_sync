@@ -15,7 +15,7 @@ class Freetime < ActiveRecord::Base
     end
 
     #Returns a new (unpersisted) Freetime object with matching availability if possible, else returns nil.
-    def find_common_time(freetime)
+    def match_time(freetime)
         if freetime.start.between?(self.start, self.end) && freetime.end.between?(self.start, self.end)
             return Freetime.new(start: freetime.start, end: freetime.end)
         elsif freetime.end.between?(self.start, self.end)
