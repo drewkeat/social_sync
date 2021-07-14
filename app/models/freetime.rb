@@ -22,8 +22,15 @@ class Freetime < ActiveRecord::Base
             return Freetime.new(start: self.start, end: freetime.end)
         elsif freetime.start.between?(self.start, self.end)
             return Freetime.new(start: freetime.start, end: self.end)
+        elsif self.start.between?(freetime.start, freetime.end) && (self.end.between?(freetime.start, freetime.end))
+            return Freetime.new(start: self.start, end: self.end)
+        elsif self.end.between?(freetime.start, freetime.end)
+            return Freetime.new(start: freetime.start, end: self.end)
+        elsif self.start.between?(freetime.start, freetime.end)
+            return Freetime.new(start: self.start, end: freetime.end)
+        else
+            return nil
         end
-        nil
     end
 
 end
