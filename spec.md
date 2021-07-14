@@ -50,7 +50,7 @@ if params[:user][:name].empty? || params[:user][:email].empty? || params[:user][
     flash[:message]= "User account not found"
     redirect '/users/new'
 ```
-- [ ] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
+- [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 
 Confirm
 - [x] You have a large number of small Git commits
