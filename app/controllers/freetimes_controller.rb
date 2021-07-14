@@ -1,5 +1,5 @@
 class FreetimesController < ApplicationController
-
+  
   # GET: /freetimes/new
   get "/freetimes/new" do
     if !Helpers.logged_in?(session)

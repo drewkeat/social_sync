@@ -6,14 +6,14 @@ class FriendshipsController < ApplicationController
   end
 
   # GET: /friendships/new
-  get "/friendships/new/:id" do
-    Helpers.current_user(session).befriend(User.find(params[:id]))
-    redirect "/users/#{params[:id]}"
+  get "/friendships/new" do
+   
   end
 
   # POST: /friendships
   post "/friendships" do
-    redirect "/friendships"
+    Helpers.current_user(session).befriend(User.find(params[:friend]))
+    redirect "/users/#{params[:friend]}"
   end
 
   # GET: /friendships/5

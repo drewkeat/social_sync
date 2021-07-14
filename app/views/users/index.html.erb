@@ -1,9 +1,13 @@
 <header>
-    <h1>Here are all of the Social Sync users</h1>
+    <h1>Social Sync Users</h1>
 </header>
 
-<ul>
-    <%@users.each do |user|%>
-    <li><a href="/users/<%=user.id%>"><%=user.name%></a> &nbsp;&nbsp;-&nbsp;&nbsp;<a href="/friendships/new/<%=user.id%>">Add Friend</a></li>
-    <%end%>
-</ul>
+<%@users.each do |user|%>
+    <div>
+        <a href="/users/<%=user.id%>"><%=user.name%></a> &nbsp; - &nbsp;
+        <form action="/friendships" method="post" style="display: inline;">
+            <input type="hidden" name="friend" value="<%=user.id%>" id="friend_id">
+            <input type="submit" value="Add Friend">
+        </form>
+    </div>
+<%end%>
