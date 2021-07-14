@@ -21,6 +21,20 @@ class FreetimesController < ApplicationController
     redirect "/users/account"
   end
 
+  post "/freetimes/common" do
+    @freetimes = Helpers.current_user(session).find_common_times(User.find(params[:friend_id]))
+    unless @freetimes.empty?
+      flash[:message] = <<-msg
+      Your common freetimes are:
+      #{@freetimes.map {|ft| ft.label}}
+      msg
+    else
+      flash[:message] = "No common times are available"
+    end
+    
+    redirect '/users/account'
+  end
+
   # GET: /freetimes/5/edit
   get "/freetimes/:id/edit" do
     @freetime = Freetime.find(params[:id])

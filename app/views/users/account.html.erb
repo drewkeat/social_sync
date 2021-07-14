@@ -16,7 +16,13 @@
 <h2>Friends</h2>
 <%@user.friends.each do |friend|%>
     <div>
-    <span><a href="/users/<%=friend.id%>"><b><%=friend.name%></b></a>   -   <a href="#">Find Freetime</a></span>
+        <span>
+            <a href="/users/<%=friend.id%>"><b><%=friend.name%></b></a>   -   
+            <form action="/freetimes/common" method="post" style="display: inline;">
+                <input type="hidden" name="friend_id" value="<%=friend.id%>">
+                <input type="submit" value="Find Freetime">
+            </form>
+        </span>
     </div>
 <%end%>
 <br>

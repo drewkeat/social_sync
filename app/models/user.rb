@@ -15,8 +15,8 @@ class User < ActiveRecord::Base
 
     def find_common_times(friend)
     freetimes = []
-        self.freetimes.each do |my_ft|
-            friend.freetimes.each do |friend_ft|
+        self.freetimes.where("start > ?", DateTime.now).sort_by {|ft| ft.start}.each do |my_ft|
+            friend.freetimes.where("start > ?", DateTime.now).sort_by {|ft| ft.start}.each do |friend_ft|
                 freetimes << my_ft.match_time(friend_ft)
             end
         end
