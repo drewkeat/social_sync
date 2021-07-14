@@ -22,14 +22,12 @@ class FreetimesController < ApplicationController
   end
 
   post "/freetimes/common" do
-    @freetimes = Helpers.current_user(session).find_common_times(User.find(params[:friend_id]))
-    unless @freetimes.empty?
-      flash[:message] = <<-msg
-      Your common freetimes are:
-      #{@freetimes.map {|ft| ft.label}}
-      msg
+    @friendship = Helpers.current_user(session).friendships.where("friend_id = ?", params[:friend_id]).first
+    @common_times = @friendship.find_common_times
+    if @common_times.empty?
+      flash[:message] = "No common times found"
     else
-      flash[:message] = "No common times are available"
+      flash[:message] = "Common Times: <br> #{@common_times.join("<br>")}"
     end
     
     redirect '/users/account'

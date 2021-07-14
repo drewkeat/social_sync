@@ -12,8 +12,15 @@ class FriendshipsController < ApplicationController
 
   # POST: /friendships
   post "/friendships" do
+    @current_user = Helpers.current_user(session)
+    @friend = User.find(params[:friend])
+    if @current_user.friends.include?(@friend)
+      flash[:message] = "You are already friends"
+      redirect '/users'
+    else
     Helpers.current_user(session).befriend(User.find(params[:friend]))
     redirect "/users/#{params[:friend]}"
+    end
   end
 
   # GET: /friendships/5

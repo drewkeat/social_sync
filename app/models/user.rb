@@ -5,6 +5,10 @@ class User < ActiveRecord::Base
     has_many :friendships, dependent: :destroy  
     has_many :friends, through: :friendships
 
+    def future_freetimes
+        self.freetimes.where("start > ?", DateTime.now)
+    end
+
     def befriend(user)
         self.friendships.build(friend_id: user.id)
         user.friendships.build(friend_id: self.id)
