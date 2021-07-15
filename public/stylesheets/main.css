@@ -24,12 +24,20 @@ body {
  }
  
  header {
+    position: relative;
     background: blanchedalmond;
     border-bottom: #61748c solid;
     box-shadow: #20818c55 0px 10px 5px;
     margin-bottom: 25px;
 }
 
+#profile_button {
+    position: absolute;
+     bottom: 0px;
+     left:30px;
+     margin: 5px;
+     z-index: 10;
+}
 h1 {
     font-family: 'Permanent Marker', 'cursive';
     color: #20818c;
