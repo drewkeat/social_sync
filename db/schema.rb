@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_07_13_173144) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "freetimes", force: :cascade do |t|
     t.datetime "start"
     t.datetime "end"
@@ -21,8 +24,8 @@ ActiveRecord::Schema.define(version: 2021_07_13_173144) do
   end
 
   create_table "friendships", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "friend_id"
+    t.bigint "user_id"
+    t.bigint "friend_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["friend_id"], name: "index_friendships_on_friend_id"
@@ -37,4 +40,5 @@ ActiveRecord::Schema.define(version: 2021_07_13_173144) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "friendships", "users"
 end
