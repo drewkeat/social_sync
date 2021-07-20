@@ -1,11 +1,5 @@
-users = [
-    "Maria Lawrence",
-    "Adelle Warren",
-    "Gaynor Windsor",
-    "Lisha Ferro",
-    "Edison Harlow"
-]
-
+users = []
+5.times {users << Faker::Name.first_name + " " + Faker::Name.last_name}
 user_array = []
 
 users.each do |user|
@@ -17,4 +11,5 @@ end
 user_array.each do |user|
     User.create(user)
 end
+
 
