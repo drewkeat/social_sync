@@ -2,6 +2,8 @@
 
 Welcome to the Social Sync web application! This application allows users to create an account, login, and share their availability with friends to coordinate social schedules.
 
+The live model can be accessed at [social-sync.herokuapp.com](http://social-sync.herokuapp.com)
+
 ## Installation
 
 - Clone this repo 
